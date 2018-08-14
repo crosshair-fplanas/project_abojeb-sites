@@ -1,0 +1,5 @@
+D:\Projects\C#\AbojebApi\AbojebApi.Core\bin\AbojebApi.Core.dll
+D:\Projects\C#\AbojebApi\AbojebApi.Core\bin\AbojebApi.Core.pdb
+D:\Projects\C#\AbojebApi\AbojebApi.Core\obj\Release\AbojebApi.Core.csprojResolveAssemblyReference.cache
+D:\Projects\C#\AbojebApi\AbojebApi.Core\obj\Release\AbojebApi.Core.dll
+D:\Projects\C#\AbojebApi\AbojebApi.Core\obj\Release\AbojebApi.Core.pdb

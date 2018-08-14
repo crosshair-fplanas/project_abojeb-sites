@@ -1,0 +1,58 @@
+﻿@model IEnumerable<AbojebApi.Models.AccountViewModel>
+@{
+    ViewBag.Title = "Accounts";
+}
+
+<div class="card">
+    <div class="card-body">
+        <h4>Accounts</h4>
+        <hr />
+
+        @Html.ActionLink("Create New", "Register", "Account", routeValues: null, htmlAttributes: new { @class = "btn btn-primary mb-4" })
+
+        <table class="table table-bordered data-table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.UserName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.FirstName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.LastName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Email)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.UserName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.FirstName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.LastName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Email)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Details", "Details", "Account", new { id = item.Id }, null) |
+                            @Html.ActionLink("Edit", "Edit", "Account", new { id = item.Id }, null) |
+                            @Html.ActionLink("Delete", "Delete", "Account", new { id = item.Id }, null)
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

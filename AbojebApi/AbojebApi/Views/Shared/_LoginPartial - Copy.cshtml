@@ -1,0 +1,29 @@
+﻿<div class="login-box">
+    <div class="login-box-body" style="background:rgba(255, 255, 255, 0.7)">
+
+        <div class="login-logo">
+            @*<img src="http://erp.auh.saniservice.com/themes/black/images/system/sani-login-logo.png" style="height: 70px;">*@
+        </div>
+        <br>
+
+        <p class="login-box-msg">Sign in to start your session</p>
+        @using (Html.BeginForm("Login", "Account", FormMethod.Post, new { id = "frmLogin" }))
+        {
+            @Html.AntiForgeryToken()
+            <div class="form-group">
+                <input type="email" name="username" class="form-control" id="username" placeholder="Email" required="">
+                <i class="fas fa-user"></i>
+            </div>
+
+            <div class="form-group">
+                <input type="password" name="password" class="form-control" id="password" placeholder="Password" required="">
+                <i class="fas fa-lock"></i>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <button type="submit" class="btn btn-info">Sign In</button>
+                </div>
+            </div>
+        }
+    </div>
+</div>

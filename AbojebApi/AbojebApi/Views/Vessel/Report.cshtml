@@ -1,0 +1,64 @@
+﻿@model IEnumerable<AbojebApi.Core.DataTransferObjects.ReportDto>
+
+<table class="table table-bordered table-responsive-sm table-responsive-md table-responsive-lg data-table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.IMO)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GPSTimeStamp)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Lat)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Lon)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cog)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Sog)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PollCategory)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PollMessage)
+            </th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IMO)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.GPSTimeStamp)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Lat)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Lon)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cog)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Sog)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PollCategory)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PollMessage)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

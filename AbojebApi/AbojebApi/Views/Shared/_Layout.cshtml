@@ -1,0 +1,108 @@
+﻿@using Microsoft.AspNet.Identity;
+@using AbojebApi.Core.Enums;
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+</head>
+<body class="app header-fixed sidebar-fixed aside-menu-fixed sidebar-lg-show">
+    <header class="app-header navbar">
+        <button class="navbar-toggler sidebar-toggler d-lg-none mr-auto" type="button" data-toggle="sidebar-show">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand" href="/">
+            <img class="navbar-brand-full" src="../../Content/img/logo.jpg" width="89" height="25" alt="Logo">
+            <img class="navbar-brand-minimized" src="img/brand/sygnet.svg" width="30" height="30" alt="Logo">
+        </a>
+        <button class="navbar-toggler sidebar-toggler d-md-down-none" type="button" data-toggle="sidebar-lg-show">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <ul class="nav navbar-nav ml-auto mr-4">
+            <li class="nav-item dropdown">
+                <a class="nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                    @User.Identity.GetUserName()
+                    @*<img class="img-avatar" src="../../Content/img/avatar.jpg" alt="admin@crosstech-solutions.com">*@
+                    <i class="fa fa-user-circle fa-2x"></i>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right">
+                    <div class="dropdown-header text-center">
+                        <strong>Account</strong>
+                    </div>
+                    <a class="dropdown-item" href="/manage/changepassword">
+                        <i class="fa fa-shield"></i> Change Password
+                    </a>
+                    @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        @*<a class="dropdown-item" href="#">
+                                <i class="fa fa-lock"></i> Logout
+                            </a>*@
+                        <button type="submit" class="dropdown-item"><i class="fa fa-lock"></i> Logout</button>
+                    }
+                </div>
+            </li>
+        </ul>
+    </header>
+    @*<div class="container body-content">
+            @RenderBody()
+            <hr />
+            <footer>
+                <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            </footer>
+        </div>*@
+
+    <div class="app-body">
+        <div class="sidebar">
+            <nav class="sidebar-nav">
+                <ul class="nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">
+                            <i class="nav-icon fas fa-tachometer-alt"></i> Dashboard
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/vessel">
+                            <i class="nav-icon fas fa-file-alt"></i> Report
+                        </a>
+                    </li>
+                    @if (User.IsInRole(RoleType.Administrator.ToString()))
+                    {
+                        <li class="nav-title">Administrator</li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/admin/accounts">
+                                <i class="nav-icon fas fa-users-cog"></i> Accounts
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/admin/vessel" target="_top">
+                                <i class="nav-icon fas fa-download"></i> Update Data
+                            </a>
+                        </li>
+                    }
+                </ul>
+            </nav>
+        </div>
+        <main class="main">
+            <div class="container-fluid mt-4">
+                <div class="animated fadeIn">
+                    @RenderBody()
+                </div>
+            </div>
+            @Html.Partial("ReturnMessage")
+        </main>
+    </div>
+
+    @Scripts.Render("~/bundles/unobtrusive")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/fontawesome")
+    @Scripts.Render("~/bundles/plugins")
+    @Scripts.Render("~/bundles/js")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
